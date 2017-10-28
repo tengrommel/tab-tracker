@@ -31,10 +31,10 @@
       ></v-text-field>
 
       <v-text-field
-        label="AlbumImage"
+        label="Album Image Url"
         required
         :rules="[required]"
-        v-model="song.albumImage"
+        v-model="song.albumImageUrl"
       ></v-text-field>
 
       <v-text-field
@@ -89,7 +89,7 @@ export default {
         artist: null,
         genre: null,
         album: null,
-        albumImage: null,
+        albumImageUrl: null,
         youtubeId: null,
         lyrics: null,
         tab: null
@@ -105,7 +105,7 @@ export default {
         .keys(this.song)
         .every(key => !!this.song[key])
       if (!areAllFieldsFilledIn) {
-        this.error = 'Please fill in all the requiredd fields.'
+        this.error = 'Please fill in all the required fields.'
         return
       }
       try {
