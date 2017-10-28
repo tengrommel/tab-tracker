@@ -2,10 +2,19 @@
   <v-layout column>
     <v-flex xs6 offset-xs3>
       <panel title="Songs">
-        <<router-link slot="ation" :to="{ name: 'songs'}">
-          <v-btn>
-            <v-icon>add</v-icon>
-          </v-btn>
+        <router-link
+        slot="action"
+        :to="{name: 'songs-create'}">
+        <v-btn
+          class="cyan accent-2"
+          light
+          medium
+          absolute
+          right
+          middle
+          fab>
+        <v-icon>add</v-icon>
+        </v-btn>
         </router-link>
         <div v-for="song in songs"
           :key="song.title">
