@@ -7,12 +7,15 @@
         TabTracker
       </span>
     </v-toolbar-title>
-    <!-- TODO: Implement Me -->
-    <!-- <v-toolbar-items>
-      <v-btn flat dark>
-        Browser
+
+    <v-toolbar-items>
+      <v-btn
+        flat
+        dark
+        @click="navigateTo({name: 'songs'})">
+        Browse
       </v-btn>
-    </v-toolbar-items> -->
+    </v-toolbar-items>
 
     <v-spacer></v-spacer>
 
@@ -38,7 +41,7 @@
         flat
         dark
         @click="logout">
-        Log Out
+        Logout
       </v-btn>
     </v-toolbar-items>
   </v-toolbar>
