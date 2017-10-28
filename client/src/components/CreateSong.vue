@@ -4,31 +4,43 @@
     <panel title="Song Metadata">
       <v-text-field
         label="Title"
+        required
+        :rules="[required]"
         v-model="song.title"
       ></v-text-field>
 
       <v-text-field
         label="Artist"
+        required
+        :rules="[required]"
         v-model="song.article"
       ></v-text-field>
 
       <v-text-field
         label="Genre"
+        required
+        :rules="[required]"
         v-model="song.genre"
       ></v-text-field>
 
       <v-text-field
         label="Album"
+        required
+        :rules="[required]"
         v-model="song.album"
       ></v-text-field>
 
       <v-text-field
         label="AlbumImage"
+        required
+        :rules="[required]"
         v-model="song.albumImage"
       ></v-text-field>
 
       <v-text-field
         label="YoutubeId"
+        required
+        :rules="[required]"
         v-model="song.youtubeId"
       ></v-text-field>
     </panel>
@@ -37,16 +49,24 @@
     <panel title="Song Structure" class="ml-2">
     <v-text-field
       label="Lyrics"
+      required
+      :rules="[required]"
       multi-line
       v-model="song.lyrics"
     ></v-text-field>
 
     <v-text-field
       label="Tab"
+      required
+      :rules="[required]"
       multi-line
       v-model="song.tab"
     ></v-text-field>
     </panel>
+
+    <div class="danger-alert" v-if="error">
+      {{error}}
+    </div>
 
     <v-btn
       dark
@@ -73,11 +93,21 @@ export default {
         youtubeId: null,
         lyrics: null,
         tab: null
-      }
+      },
+      error: null,
+      required: (value) => !!value || 'Required.'
     }
   },
   methods: {
     async create () {
+      this.error = null
+      const areAllFieldsFilledIn = Object
+        .keys(this.song)
+        .every(key => !!this.song[key])
+      if (!areAllFieldsFilledIn) {
+        this.error = 'Please fill in all the requiredd fields.'
+        return
+      }
       try {
         await SongsService.post(this.song)
         this.$router.push({

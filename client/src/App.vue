@@ -33,6 +33,10 @@ export default {
   margin-top: 60px;
 }
 
+.danger-alert {
+  color: red;
+ }
+
 .input-group--text-field input {
   border-bottom: 1px solid black;
 }
