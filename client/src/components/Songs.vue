@@ -32,12 +32,13 @@
               <v-btn
                 dark
                 class="cyan"
-                @class="navigateTo({
+                @click="navigateTo({
                   name: 'song',
                   params: {
                     songId: song.id
-                    }
-                    })">进入
+                  }
+                })">
+                进入
               </v-btn>
 
             </v-flex>
