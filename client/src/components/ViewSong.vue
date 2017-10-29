@@ -5,7 +5,9 @@
       {{song.title}}
       {{song.artist}}
       {{song.genre}}
+      {{song.albumImageUrl}}
     </div>
+    <img class="album-image" :src="song.albumImageUrl">
   </panel>
 </v-layout>
 </template>
